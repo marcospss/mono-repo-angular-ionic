@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>The Movie Database (TMDb)</title>
+    <meta name="description" content="Is a community built movie and TV database. Every piece of data has been added by our amazing community dating back to 2008.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .containerAnimation {
+            display: flex;
+            min-height: 80vh;
+            flex-direction: column;
+            justify-content: center;
+            color: #294E80;
+            text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica, sans-serif;
+            font-size: 1.5em;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .containerAnimation .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lds-dual-ring {
+            display: inline-block;
+            width: 64px;
+            height: 64px;
+            padding-bottom: 1em;
+        }
+        
+        .lds-dual-ring:after {
+            content: " ";
+            display: block;
+            width: 46px;
+            height: 46px;
+            margin: 1px;
+            border-radius: 50%;
+            border: 8px solid #294E80;
+            border-color: #294E80 transparent #294E80 transparent;
+            animation: lds-dual-ring 1.2s linear infinite;
+        }
+        
+        @keyframes lds-dual-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <mps-root>
+        <div class="containerAnimation" role="application">
+            <div class="main">
+                <div class="lds-dual-ring"></div>
+                Loading...
+            </div>
+        </div>
+    </mps-root>
+</body>
+
+</html>

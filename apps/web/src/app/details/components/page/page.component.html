@@ -1,0 +1,36 @@
+<div class="page" *ngIf="details">
+    <div class="breadcrumbs">
+        <a [routerLink]="['/home']">Home</a>
+        <a [routerLink]="['/discover']">Discover</a>
+        <span>{{ utilsProvider.title(details) }}</span>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <figure class="movie-poster">
+                    <img [src]="utilsProvider.backdropImage(details.backdrop_path, 'w780')" alt="{{ utilsProvider.title(details) }}">
+                </figure>
+            </div>
+            <div class="col-md-6">
+                <h2 class="movie-title">{{ utilsProvider.title(details) }}</h2>
+                <div class="movie-summary">
+                    <p>{{ details.overview }}</p>
+                </div>
+                <ul class="movie-meta">
+                    <li><strong>Rating:</strong>
+                        <div class="star-rating" title="Rated {{ voteAverage }} out of 100"><span [ngStyle]="{ width: voteAverage + '%' }"><strong class="rating">{{ voteAverage }}</strong> out of 100</span></div>
+                    </li>
+                    <li><strong>Length:</strong> {{ runtime }}</li>
+                    <li><strong>Premiere:</strong> {{ details.release_date }}</li>
+                    <li *ngIf="details.genres"><strong>Category:</strong> {{ genres }}</li>
+                </ul>
+
+                <ul class="starring">
+                    <li><strong>Directors:</strong> </li>
+                    <li><strong>Writers:</strong> </li>
+                    <li><strong>Stars:</strong> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

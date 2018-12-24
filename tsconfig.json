@@ -1,0 +1,29 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2017",
+            "dom"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@platform/*": ["./libs/*"],
+            "@models": ["./libs/core/models"],
+            "@services": ["./libs/core/services"],
+            "@environments": ["./libs/core/environments"]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "tmp"
+    ]
+}

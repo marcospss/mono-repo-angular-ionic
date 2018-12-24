@@ -1,0 +1,22 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../dist/out-tsc/apps/web",
+    "module": "es2015",
+    "baseUrl": ".",
+        "paths": {
+            "@environments": ["../../../libs/core/environments"],
+            "@platform/*": ["../../../libs/*"],
+            "@models": ["../../../libs/core/models"],
+            "@services": ["../../../libs/core/services"],
+            "@reducersRoot": ["app/reducers"]
+        }
+  },
+  "include": [
+    "**/*.ts",
+    "../../../libs/core/index.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ]
+}

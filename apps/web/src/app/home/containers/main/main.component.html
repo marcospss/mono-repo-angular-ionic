@@ -1,0 +1,39 @@
+<div class="page" *ngIf="mediasPopular$ | async; let mediasPopular; else loading">
+    <article class="row">
+        <header class="col-sm-12">
+            <h1 class="section-title">Popular Movies</h1>
+        </header>
+        <div class="col-md-9">
+            <div class="slider">
+                <mps-carousel [medias]="mediasPopular" mediaType="movie" startIndex="0" endIndex="4"></mps-carousel>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div *ngFor="let item of mediasPopular.results | slice: 4:7" class="col-sm-6 col-md-12">
+                    <mps-card-backdrop-image [item]="item" mediaType="movie" className="latest-movie" [showOverview]="false"></mps-card-backdrop-image>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="row">
+        <div *ngFor="let item of mediasPopular.results | slice: 7:11" class="col-sm-6 col-md-3">
+            <mps-card-backdrop-image [item]="item" mediaType="movie" className="latest-movie" [showOverview]="true"></mps-card-backdrop-image>
+        </div>
+    </article>
+    <article class="row">
+        <header class="col-sm-12">
+            <h1 class="section-title">Top Rated Movies</h1>
+        </header>
+        <div class="col-sm-12">
+            <ul class="list-unstyled" *ngIf="mediasTopRated$ | async; let mediasTopRated">
+                <li *ngFor="let item of mediasTopRated.results | slice: 0:9" class="col-sm-12 col-md-4">
+                    <mps-card-poster-image [item]="item" mediaType="movie"></mps-card-poster-image>
+                </li>
+            </ul>
+        </div>
+    </article>
+</div>
+<ng-template #loading>
+    <mps-loading-animation></mps-loading-animation>
+</ng-template>

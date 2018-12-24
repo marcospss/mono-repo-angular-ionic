@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "declaration": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "dom",
+            "es2015"
+        ],
+        "module": "es2015",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "target": "es5",
+        "typeRoots": [
+            "../node_modules/@types"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@environments": ["../../libs/core/environments/environment"],
+            "@platform/*": ["../../libs/*"],
+            "@models": ["../../../libs/core/models"],
+            "@services": ["../../../libs/core/services"],
+            "@reducersRoot": ["app/reducers"]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "../../../libs/core/index.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "src/**/*.spec.ts",
+        "src/**/__tests__/*.ts"
+    ],
+    "compileOnSave": false,
+    "atom": {
+        "rewriteTsconfig": false
+    }
+}
