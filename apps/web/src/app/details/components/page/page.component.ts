@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Details } from '@platform/core/models';
+import { Details, Credits, Discover } from '@platform/core/models';
 import { UtilsProvider } from '@platform/core/services';
 
 @Component({
@@ -11,6 +11,8 @@ import { UtilsProvider } from '@platform/core/services';
 export class PageComponent implements OnInit {
 
     @Input() details: Details[];
+    @Input() credits: Credits[];
+    @Input() recommendations: Discover[];
 
     constructor(
         public utilsProvider: UtilsProvider

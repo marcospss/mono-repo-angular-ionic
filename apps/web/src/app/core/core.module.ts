@@ -11,6 +11,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { CardBackdropImageComponent } from './components/card-backdrop-image/card-backdrop-image.component';
 import { LoadingAnimationComponent } from './components/loading-animation/loading-animation.component';
 import { CardPosterImageComponent } from './components/card-poster-image/card-poster-image.component';
+import { CardCastComponent } from './components/card-cast/card-cast.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, CarouselModule.forRoot()],
@@ -22,7 +23,8 @@ import { CardPosterImageComponent } from './components/card-poster-image/card-po
         CarouselComponent,
         CardBackdropImageComponent,
         LoadingAnimationComponent,
-        CardPosterImageComponent
+        CardPosterImageComponent,
+        CardCastComponent
     ],
     exports: [
         RootComponent,
@@ -30,7 +32,8 @@ import { CardPosterImageComponent } from './components/card-poster-image/card-po
         CarouselComponent,
         CardBackdropImageComponent,
         LoadingAnimationComponent,
-        CardPosterImageComponent
+        CardPosterImageComponent,
+        CardCastComponent
     ]
 })
 export class CoreModule { }

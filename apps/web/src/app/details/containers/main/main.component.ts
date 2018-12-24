@@ -13,7 +13,11 @@ import { UtilsProvider } from '@platform/core/services';
 @Component({
     selector: 'mps-main',
     template: `
-    <mps-page *ngIf="details$ | async; let details; else loading" [details]="details"></mps-page>
+    <mps-page *ngIf="details$ | async; let details; else loading"
+        [details]="details"
+        [credits]="credits$ | async"
+        [recommendations]="recommendations$ | async">
+    </mps-page>
     <ng-template #loading>
         <mps-loading-animation></mps-loading-animation>
     </ng-template>
@@ -48,6 +52,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
         this.subscriptionRoute = this.route.params.subscribe(
             (params: any) => {
+                console.log('subscriptionRoute', this.idMedia);
                 filterDetailsProperties.mediaType = params['mediaType'];
                 filterDetailsProperties.id = params['mediaId'];
             }

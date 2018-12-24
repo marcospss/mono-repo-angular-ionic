@@ -4,7 +4,7 @@
         <a [routerLink]="['/discover']">Discover</a>
         <span>{{ utilsProvider.title(details) }}</span>
     </div>
-    <div class="content">
+    <article class="content">
         <div class="row">
             <div class="col-md-6">
                 <figure class="movie-poster">
@@ -24,13 +24,27 @@
                     <li><strong>Premiere:</strong> {{ details.release_date }}</li>
                     <li *ngIf="details.genres"><strong>Category:</strong> {{ genres }}</li>
                 </ul>
-
-                <ul class="starring">
-                    <li><strong>Directors:</strong> </li>
-                    <li><strong>Writers:</strong> </li>
-                    <li><strong>Stars:</strong> </li>
+            </div>
+        </div>
+        <div class="row" *ngIf="credits">
+            <header class="col-sm-12">
+                <h1 class="section-title">Cast</h1>
+            </header>
+            <div *ngFor="let item of credits.cast | slice: 0:8" class="col-sm-6 col-md-3">
+                <mps-card-cast [item]="item"></mps-card-cast>
+            </div>
+        </div>
+        <div class="row" *ngIf="recommendations">
+            <header class="col-sm-12">
+                <h1 class="section-title">Recommendations</h1>
+            </header>
+            <div class="col-sm-12">
+                <ul class="list-unstyled">
+                    <li *ngFor="let item of recommendations.results | slice: 0:9" class="col-sm-12 col-md-4">
+                        <mps-card-poster-image [item]="item" mediaType="movie"></mps-card-poster-image>
+                    </li>
                 </ul>
             </div>
         </div>
-    </div>
+    </article>
 </div>
