@@ -35,31 +35,11 @@ export class UtilsProvider {
         return `${imagesConfiguration.secure_base_url}${sizeImage}${profile_sizes}`;
     }
 
-
-    //   convertMinutesToTime(duration: string): string {
-    //       let minutes = parseInt(duration, 10);
-
-    //     let seconds = (duration / 1000) % 60;
-    //     // const minutesx = parseInt((duration / (1000 * 60)) % 60, 10);
-
-    //     // seconds = (seconds < 10) ? `0${seconds}` : seconds;
-
-    //     // return `${minutes}:${seconds}`;
-
-    //     // let min = parseInt(minutes);
-    //     // let hours = Math.floor(min / 60);
-    //     // let remainingMinutes = min % 60;
-    //     // return hours + ":" + remainingMinutes;
-    //   }
-
-    convertMinutesToTime(time: string): string {
-        const timeConvert = parseInt(time, 10);
-        const seconds = (timeConvert / 1000) % 60;
-        const minutes = (timeConvert / (1000 * 60)) % 60;
-
-        const secondsTotal = (seconds < 10) ? `0${seconds}` : seconds;
-
-        return `${minutes}:${secondsTotal}`;
+    convertMinutesToTime(data) {
+        const minutes = data % 60;
+        const hours = (data - minutes) / 60;
+        const totalMinutes = (minutes < 10) ? `0${minutes}` : minutes;
+        return `${hours}h ${totalMinutes}m`;
     }
 
 }
