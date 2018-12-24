@@ -68,6 +68,8 @@ $ npm i
 ```sh
 ionic serve
 ```
+### Referências
+* [Sharing (Ngrx-based) logic between Angular5 web app and Ionic3 mobile app](https://medium.com/agorapulse-stories/sharing-ngrx-based-logic-between-angular5-web-app-and-ionic3-mobile-app-77c19470cccc)
 
 ---
 
