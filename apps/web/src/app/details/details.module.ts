@@ -7,6 +7,7 @@ import { ItemDetailModule } from '@platform/core/state/item-detail/item-detail.m
 import { DetailsRoutingModule } from './details-routing.module';
 import { MainComponent } from './containers/main/main.component';
 import { PageComponent } from './components/page/page.component';
+import { SelectedItemComponent } from './containers/selected-item/selected-item.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { PageComponent } from './components/page/page.component';
     CoreModule,
     ItemDetailModule
   ],
-  declarations: [MainComponent, PageComponent]
+  declarations: [MainComponent, PageComponent, SelectedItemComponent]
 })
 export class DetailsModule { }

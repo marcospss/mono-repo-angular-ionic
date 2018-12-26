@@ -18,7 +18,7 @@ export class ItemDetailEffects {
 
     @Effect()
     loadDetails$: Observable<Action> =  this.actions$.pipe(
-        ofType<DetailsActions.FilterPropertiesDetails>(DetailsActions.DetailsActionTypes.FilterPropertiesDetails),
+        ofType<DetailsActions.SelectItem>(DetailsActions.DetailsActionTypes.SelectItem),
         map(action => action.payload),
         mergeMap(properties => {
             return this.commonProvider.getDetails(properties).pipe(
@@ -30,7 +30,7 @@ export class ItemDetailEffects {
 
     @Effect()
     loadCredits$: Observable<Action> =  this.actions$.pipe(
-        ofType<CreditsActions.FilterPropertiesCredits>(CreditsActions.CreditsActionTypes.FilterPropertiesCredits),
+        ofType<DetailsActions.SelectItem>(DetailsActions.DetailsActionTypes.SelectItem),
         map(action => action.payload),
         mergeMap(properties => {
             return this.commonProvider.getCredits(properties).pipe(
@@ -42,7 +42,7 @@ export class ItemDetailEffects {
 
     @Effect()
     loadRecommendations$: Observable<Action> =  this.actions$.pipe(
-        ofType<RecommendationsActions.FilterPropertiesRecommendations>(RecommendationsActions.RecommendationsActionTypes.FilterPropertiesRecommendations),
+        ofType<DetailsActions.SelectItem>(DetailsActions.DetailsActionTypes.SelectItem),
         map(action => action.payload),
         mergeMap(properties => {
             return this.commonProvider.getRecommendations(properties).pipe(

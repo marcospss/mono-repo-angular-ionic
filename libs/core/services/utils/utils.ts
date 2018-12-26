@@ -35,11 +35,15 @@ export class UtilsProvider {
         return `${imagesConfiguration.secure_base_url}${sizeImage}${profile_sizes}`;
     }
 
-    convertMinutesToTime(data) {
+    convertMinutesToTime(data): string {
         const minutes = data % 60;
         const hours = (data - minutes) / 60;
         const totalMinutes = (minutes < 10) ? `0${minutes}` : minutes;
         return `${hours}h ${totalMinutes}m`;
+    }
+
+    scrollTopPage(): void {
+        window.scrollTo(0, 0);
     }
 
 }

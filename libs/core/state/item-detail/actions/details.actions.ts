@@ -2,11 +2,17 @@ import { Action } from '@ngrx/store';
 import { Details } from './../../../models';
 
 export enum DetailsActionTypes {
+    SelectItem = '[Item Detail/Details] Select Item',
     FilterPropertiesDetails = '[Item Detail/Details] Filter Properties Details',
     DetailsLoadSuccess = '[Item Detail/Details] Load Details Success',
     DetailsLoadFailure = '[Item Detail/Details] Load Details Failure'
 }
 
+export class SelectItem implements Action {
+    readonly type = DetailsActionTypes.SelectItem;
+
+    constructor(public payload: object) {}
+  }
 export class FilterPropertiesDetails implements Action {
     readonly type = DetailsActionTypes.FilterPropertiesDetails;
 
@@ -26,6 +32,7 @@ export class DetailsLoadFailure implements Action {
 }
 
 export type DetailsActionsUnion =
+    | SelectItem
     | FilterPropertiesDetails
     | DetailsLoadSuccess
     | DetailsLoadFailure;

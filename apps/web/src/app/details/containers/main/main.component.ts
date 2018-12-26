@@ -1,66 +1,29 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 import { fromItemDetail } from '@platform/core/state/item-detail';
-import { Details, Credits, Discover } from '@platform/core/models';
-import { DetailsActions, CreditsActions, RecommendationsActions } from '@platform/core/state/item-detail';
+import { DetailsActions } from '@platform/core/state/item-detail';
+import { map } from 'rxjs/operators';
 
-import { UtilsProvider } from '@platform/core/services';
 
 @Component({
     selector: 'mps-main',
-    template: `
-    <mps-page *ngIf="details$ | async; let details; else loading"
-        [details]="details"
-        [credits]="credits$ | async"
-        [recommendations]="recommendations$ | async">
-    </mps-page>
-    <ng-template #loading>
-        <mps-loading-animation></mps-loading-animation>
-    </ng-template>
-    `,
+    template: `<mps-selected-item></mps-selected-item>`,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainComponent implements OnInit, OnDestroy {
-    details$: Observable<Details[]>;
-    credits$: Observable<Credits[]>;
-    recommendations$: Observable<Discover[]>;
-
-    private idMedia: number;
-    private mediaType: string;
+export class MainComponent implements OnDestroy {
     private subscriptionRoute: Subscription;
 
     constructor(
         private store: Store<fromItemDetail.ItemDetailStates>,
-        public utilsProvider: UtilsProvider,
-        private route: ActivatedRoute,
-        private router: Router
+        private route: ActivatedRoute
     ) {
-        this.details$ = store.pipe(select(fromItemDetail.getDetailsResults));
-        this.credits$ = store.pipe(select(fromItemDetail.getCreditsResults));
-        this.recommendations$ = store.pipe(select(fromItemDetail.getRecommendationsResults));
-    }
-
-    ngOnInit() {
-        const filterDetailsProperties = {
-            id: this.idMedia,
-            mediaType: this.mediaType
-        };
-
-        this.subscriptionRoute = this.route.params.subscribe(
-            (params: any) => {
-                console.log('subscriptionRoute', this.idMedia);
-                filterDetailsProperties.mediaType = params['mediaType'];
-                filterDetailsProperties.id = params['mediaId'];
-            }
-        );
-
-        this.store.dispatch(new DetailsActions.FilterPropertiesDetails(filterDetailsProperties));
-        this.store.dispatch(new CreditsActions.FilterPropertiesCredits(filterDetailsProperties));
-        this.store.dispatch(new RecommendationsActions.FilterPropertiesRecommendations(filterDetailsProperties));
+        this.subscriptionRoute = route.params.pipe(
+            map(params => new DetailsActions.SelectItem(params))
+        ).subscribe(store);
     }
 
     ngOnDestroy() {

@@ -20,7 +20,7 @@ export class CommonProvider {
    */
   getCredits(properties: object): Observable<Credits[]> {
     const mediaType = properties['mediaType'],
-    id = properties['id'];
+    id = properties['mediaId'];
     return this.http.get<Credits[]>(`${environment.apiEndpoint}/${mediaType}/${id}/credits?api_key=${environment.apikey}&language=${environment.language}`);
   }
 
@@ -31,7 +31,7 @@ export class CommonProvider {
    */
   getRecommendations(properties: object): Observable<Discover[]> {
     const mediaType = properties['mediaType'],
-    id = properties['id'];
+    id = properties['mediaId'];
     return this.http.get<Discover[]>(`${environment.apiEndpoint}/${mediaType}/${id}/recommendations?api_key=${environment.apikey}&language=${environment.language}`);
   }
 
@@ -43,7 +43,7 @@ export class CommonProvider {
    */
   getSimilar(properties: object): Observable<Discover[]> {
     const mediaType = properties['mediaType'],
-    id = properties['id'];
+    id = properties['mediaId'];
     return this.http.get<Discover[]>(`${environment.apiEndpoint}/${mediaType}/${id}/similar?api_key=${environment.apikey}&language=${environment.language}`);
   }
 
@@ -64,7 +64,7 @@ export class CommonProvider {
    */
   getDetails(properties: object): Observable<Details[]> {
     const mediaType = properties['mediaType'],
-    id = properties['id'];
+    id = properties['mediaId'];
     return this.http.get<Details[]>(`${environment.apiEndpoint}/${mediaType}/${id}?api_key=${environment.apikey}&language=${environment.language}`);
   }
 
