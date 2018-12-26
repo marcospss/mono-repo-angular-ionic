@@ -39,7 +39,7 @@
                 <h1 class="section-title">Recommendations</h1>
             </header>
             <div class="col-sm-12">
-                <ul class="list-unstyled">
+                <ul class="recommendations list-unstyled">
                     <li *ngFor="let item of recommendations.results | slice: 0:9" class="col-sm-12 col-md-4">
                         <mps-card-poster-image [item]="item" mediaType="movie"></mps-card-poster-image>
                     </li>

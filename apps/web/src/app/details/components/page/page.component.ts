@@ -6,7 +6,15 @@ import { UtilsProvider } from '@platform/core/services';
 @Component({
     selector: 'mps-page',
     templateUrl: './page.component.html',
-    styleUrls: ['./page.component.scss']
+    styles: [
+        `
+        ul.recommendations li {
+            height: 190px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        `
+    ]
 })
 export class PageComponent implements OnInit {
 

@@ -29,8 +29,8 @@ import { UtilsProvider } from '@platform/core/services';
         .overview a {
             color: #777;
         }
-        .overview h3 {
-            margin: 0px 0px 10px 0px;
+        .overview p {
+            overflow: hidden;
         }
         .overview p::after {
             content: "...";
