@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { fromItemDetail } from '@platform/core/state/item-detail';
 import { Media, Credits, Discover } from '@platform/core/models';
-import { CreditsActions, RecommendationsActions } from '@platform/core/state/item-detail';
+import { DetailsActions } from '@platform/core/state/item-detail';
 
 import { UtilsProvider } from '@platform/core/services';
 
@@ -36,14 +36,13 @@ export class ItemDetailPage {
   ionViewDidLoad() {
     const filterProperties = {
       mediaType: this.mediaType,
-      id: this.item.id
+      mediaId: this.item.id
     };
-    this.store.dispatch(new CreditsActions.FilterPropertiesCredits(filterProperties));
-    this.store.dispatch(new RecommendationsActions.FilterPropertiesRecommendations(filterProperties));
+    this.store.dispatch(new DetailsActions.SelectItem(filterProperties));
   }
 
   get title(): string {
-    return ((this.item.title) ? this.item.title : this.item.name );
+    return this.utilsProvider.title(this.item);
   }
 
   get overview(): string {
