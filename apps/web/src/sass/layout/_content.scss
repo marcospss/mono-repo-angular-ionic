@@ -93,6 +93,13 @@
         background-repeat: no-repeat;
         background-position: 100% center;
     }
+    label {
+        span {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+    }
 }
 
 .movie-list {

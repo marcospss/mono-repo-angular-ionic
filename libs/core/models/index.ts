@@ -5,6 +5,7 @@ import { Media } from './media';
 import { MultiSearch } from './multi-search';
 import { Credits } from './credits';
 import { Details } from './details';
+import { Genres } from './genres';
 
 export {
     Discover,
@@ -13,5 +14,6 @@ export {
     Media,
     MultiSearch,
     Credits,
-    Details
+    Details,
+    Genres
 };

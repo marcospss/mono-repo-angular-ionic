@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { DiscoverRoutingModule } from './discover-routing.module';
 import { MainComponent } from './containers/main/main.component';
+import { CoreModule } from './../core/core.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    DiscoverRoutingModule
+    DiscoverRoutingModule,
+    CoreModule
   ],
   declarations: [MainComponent]
 })
