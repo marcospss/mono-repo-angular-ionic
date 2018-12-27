@@ -12,7 +12,6 @@ import { CardBackdropImageComponent } from './components/card-backdrop-image/car
 import { LoadingAnimationComponent } from './components/loading-animation/loading-animation.component';
 import { CardPosterImageComponent } from './components/card-poster-image/card-poster-image.component';
 import { CardCastComponent } from './components/card-cast/card-cast.component';
-import { FiltersComponent } from './components/filters/filters.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, CarouselModule.forRoot()],
@@ -25,8 +24,7 @@ import { FiltersComponent } from './components/filters/filters.component';
         CardBackdropImageComponent,
         LoadingAnimationComponent,
         CardPosterImageComponent,
-        CardCastComponent,
-        FiltersComponent
+        CardCastComponent
     ],
     exports: [
         RootComponent,
@@ -35,8 +33,7 @@ import { FiltersComponent } from './components/filters/filters.component';
         CardBackdropImageComponent,
         LoadingAnimationComponent,
         CardPosterImageComponent,
-        CardCastComponent,
-        FiltersComponent
+        CardCastComponent
     ]
 })
 export class CoreModule { }
