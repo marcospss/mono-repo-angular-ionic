@@ -9,15 +9,20 @@ import { Genres } from '@models';
     styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent implements OnInit {
-    years: Array<number> = this.getYears();
+    years: Array<number> = [];
     filters: FormGroup;
     @Input() genres: Genres[];
     @Output() filterMovies = new EventEmitter<any>();
+
+    private date: Date = new Date();
+    private currentYear: number = this.date.getFullYear();
     constructor(
         private formBuilder: FormBuilder
     ) { }
 
     ngOnInit() {
+
+        this.getYears();
         this.filters = this.formBuilder.group({
             mediaType: 'movie',
             year: '',
@@ -30,15 +35,10 @@ export class FiltersComponent implements OnInit {
    * Get Years
    * Return list years
    */
-    getYears(): number[] {
-        const arrYears: Array<number> = [],
-            date: Date = new Date(),
-            currentYear: number = date.getFullYear();
-
-        for (let year = currentYear + 1; year >= 1900; year -= 1) {
-            arrYears.push(year);
+    getYears(): void {
+        for (let year = this.currentYear + 1; year >= 1900; year -= 1) {
+            this.years.push(year);
         }
-        return arrYears;
     }
 
     filterMedia():void {
