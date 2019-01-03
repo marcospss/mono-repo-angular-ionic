@@ -5,9 +5,10 @@ import { Observable } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 
 import { DiscoverProvider, CommonProvider } from './../../../services';
-import { Discover } from './../../../models';
+import { Discover, Genres } from './../../../models';
 import * as DiscoverActions from '../actions/discover.actions';
 import * as TopRatedActions from '../actions/top-rated.actions';
+import * as GenresActions from '../actions/genres.actions';
 
 @Injectable()
 export class MoviesEffects {
@@ -38,6 +39,18 @@ export class MoviesEffects {
             return this.commonProvider.getTopRated(properties).pipe(
                 map((movies: Discover[]) => new TopRatedActions.LoadMoviesSuccess(movies)),
                 catchError(err => Observable.of(new TopRatedActions.LoadMoviesFailure(err)))
+            );
+        })
+    );
+
+    @Effect()
+    loadGenres$: Observable<Action> =  this.actions$.pipe(
+        ofType<GenresActions.FilterPropertiesGenres>(GenresActions.GenresActionTypes.FilterPropertiesGenres),
+        map(action => action.payload),
+        mergeMap(properties => {
+            return this.commonProvider.getGenre(properties).pipe(
+                map((genres: Genres[]) => new GenresActions.LoadGenresSuccess(genres)),
+                catchError(err => Observable.of(new GenresActions.LoadGenresFailure(err)))
             );
         })
     );

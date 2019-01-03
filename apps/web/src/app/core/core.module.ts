@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
@@ -12,9 +13,14 @@ import { CardBackdropImageComponent } from './components/card-backdrop-image/car
 import { LoadingAnimationComponent } from './components/loading-animation/loading-animation.component';
 import { CardPosterImageComponent } from './components/card-poster-image/card-poster-image.component';
 import { CardCastComponent } from './components/card-cast/card-cast.component';
-
+import { FiltersComponent } from './components/filters/filters.component';
 @NgModule({
-    imports: [CommonModule, RouterModule, CarouselModule.forRoot()],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RouterModule,
+        CarouselModule.forRoot()
+    ],
     declarations: [
         RootComponent,
         NotFoundPageComponent,
@@ -24,16 +30,19 @@ import { CardCastComponent } from './components/card-cast/card-cast.component';
         CardBackdropImageComponent,
         LoadingAnimationComponent,
         CardPosterImageComponent,
-        CardCastComponent
+        CardCastComponent,
+        FiltersComponent
     ],
     exports: [
         RootComponent,
         NotFoundPageComponent,
+        ReactiveFormsModule,
         CarouselComponent,
         CardBackdropImageComponent,
         LoadingAnimationComponent,
         CardPosterImageComponent,
-        CardCastComponent
+        CardCastComponent,
+        FiltersComponent
     ]
 })
 export class CoreModule { }

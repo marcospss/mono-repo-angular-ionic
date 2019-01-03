@@ -20,7 +20,7 @@ export class DiscoverProvider {
     * @param { String } sortBy
     * @param { String } year
     * @param { String } genre
-    * @param { String } yearFilter
+    * @param { String } fieldFilter
     * @returns Movie List Result Object
    */
     getDiscover(properties: object): Observable<Discover[]> {
@@ -28,9 +28,10 @@ export class DiscoverProvider {
       sortBy = properties['sortBy'],
       year = properties['year'],
       genre = properties['genre'],
-      yearFilter = (mediaType === 'movie') ? 'year' : 'first_air_date_year';
+      fieldFilter = (mediaType === 'movie') ? 'year' : 'first_air_date_year';
 
-      return this.http.get<Discover[]>(`${environment.apiEndpoint}/discover/${mediaType}?api_key=${environment.apikey}&language=${environment.language}&sort_by=${sortBy}&with_genres=${genre}&${yearFilter}=${year}`);
+      return this.http.get<Discover[]>
+      (`${environment.apiEndpoint}/discover/${mediaType}?api_key=${environment.apikey}&language=${environment.language}&sort_by=${sortBy}&with_genres=${genre}&${fieldFilter}=${year}`);
     }
 
 }

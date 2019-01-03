@@ -1,14 +1,12 @@
-<div class="filters">
-    <label for="primary_release_year"><span>Year</span>
-            <select id="primary_release_year" name="primary_release_year">
-                <option value="#">None</option>
-                <option value="#">2012</option>
-                <option value="#">2013</option>
-                <option value="#">2014</option>
+<form class="filters" role="filter" [formGroup]="filters">
+    <label for="year"><span>Year</span>
+            <select id="year" name="year" formControlName="year">
+                <option value="">None</option>
+                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
             </select>
         </label>
-    <label for="sort_by"><span>Sort By</span>
-        <select id="sort_by" name="sort_by">
+    <label for="sortBy"><span>Sort By</span>
+        <select id="sortBy" name="sortBy" formControlName="sortBy">
             <option value="popularity.desc">Popularity Descending</option>
             <option value="popularity.asc">Popularity Ascending</option>
             <option value="vote_average.desc">Rating Descending</option>
@@ -19,14 +17,12 @@
             <option value="title.desc">Title (Z-A)</option>
         </select>
     </label>
-    <label for="with_genres"><span>Genres</span>
-            <select id="with_genres" name="with_genres">
-                    <option value="#">Action</option>
-                    <option value="#">Drama</option>
-                    <option value="#">Fantasy</option>
-                    <option value="#">Horror</option>
-                    <option value="#">Adventure</option>
-                </select>
+    <label for="genre"><span>Genres</span>
+        <select id="genre" name="genre" formControlName="genre">
+            <option value="">None</option>
+            <option [value]="genre.id" *ngFor="let genre of genres.genres">{{ genre.name }}</option>
+        </select>
     </label>
+    <button (click)="filterMedia()">Filter <i class="fa fa-search"></i></button>
 
-</div>
+</form>
