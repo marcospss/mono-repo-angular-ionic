@@ -1,0 +1,4 @@
+<form class="search-form" role="search" [formGroup]="search">
+    <input type="text" name="query" id="query" placeholder="Search..." [class.active]="showInput" (keyup)="searchMedia($event.target.value)" />
+    <button (click)="showSearch()"><i class="fa fa-search"></i></button>
+</form>

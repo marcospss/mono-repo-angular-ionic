@@ -10,7 +10,7 @@ import * as SearchActions from './../actions/search.actions';
 
 @Injectable()
 export class SearchEffects {
-    
+
     constructor(
         private actions$: Actions,
         private searchProvider: SearchProvider
@@ -25,7 +25,7 @@ export class SearchEffects {
             return this.searchProvider.getMultiSearch(properties).pipe(
                 map((medias: MultiSearch[]) => new SearchActions.SearchSuccess(medias)),
                 catchError(err => Observable.of(new SearchActions.SearchFailure(err)))
-            )
+            );
         })
     );
 }

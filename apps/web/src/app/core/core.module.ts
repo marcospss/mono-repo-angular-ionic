@@ -14,6 +14,7 @@ import { LoadingAnimationComponent } from './components/loading-animation/loadin
 import { CardPosterImageComponent } from './components/card-poster-image/card-poster-image.component';
 import { CardCastComponent } from './components/card-cast/card-cast.component';
 import { FiltersComponent } from './components/filters/filters.component';
+import { SearchComponent } from './components/search/search.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -31,7 +32,8 @@ import { FiltersComponent } from './components/filters/filters.component';
         LoadingAnimationComponent,
         CardPosterImageComponent,
         CardCastComponent,
-        FiltersComponent
+        FiltersComponent,
+        SearchComponent
     ],
     exports: [
         RootComponent,
@@ -42,7 +44,8 @@ import { FiltersComponent } from './components/filters/filters.component';
         LoadingAnimationComponent,
         CardPosterImageComponent,
         CardCastComponent,
-        FiltersComponent
+        FiltersComponent,
+        SearchComponent
     ]
 })
 export class CoreModule { }

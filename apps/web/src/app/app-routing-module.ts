@@ -22,10 +22,6 @@ const routes: Routes = [
         loadChildren: './discover/discover.module#DiscoverModule'
     },
     {
-        path: 'tv-shows',
-        loadChildren: './discover/discover.module#DiscoverModule'
-    },
-    {
         path: 'search',
         loadChildren: './search/search.module#SearchModule'
     },

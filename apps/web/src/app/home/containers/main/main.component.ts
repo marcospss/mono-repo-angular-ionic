@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as fromRoot from '@reducersRoot';
 import { fromMovies, DiscoverActions, TopRatedActions } from '@platform/core/state/movies';
 import { Discover } from '@models';
 
