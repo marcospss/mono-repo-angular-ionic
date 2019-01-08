@@ -87,13 +87,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "mps",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "mps",
       "kebab-case"
     ],
     "use-input-property-decorator": true,
