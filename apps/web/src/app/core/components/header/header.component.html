@@ -26,7 +26,7 @@
         <!-- .main-navigation -->
 
         <div class="mobile-navigation"></div>
-        <div class="col-xs-12" *ngIf="searchMedias$ | async; let searchMedias">
+        <div class="col-xs-12 list-drop-search" *ngIf="searchMedias$ | async; let searchMedias">
             <div *ngFor="let item of searchMedias.results" class="col-xs-6 col-md-3">
                 <mps-card-backdrop-image [item]="item" mediaType="movie" className="latest-movie" [showOverview]="false" (clearSearch)="clearSearch()"></mps-card-backdrop-image>
             </div>
