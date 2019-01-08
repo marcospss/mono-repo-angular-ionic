@@ -18,10 +18,18 @@
                 <li class="menu-item"><a [routerLink]="['/favorites']">Favorites</a></li>
             </ul>
             <!-- .menu -->
-            <mps-search></mps-search>
+            <form class="search-form" role="search" [formGroup]="search">
+                <input type="text" name="query" id="query" placeholder="Search..." [class.active]="showInput" (keyup)="searchMedia($event.target.value)" />
+                <button (click)="showSearch()"><i class="fa fa-search"></i></button>
+            </form>
         </div>
         <!-- .main-navigation -->
 
         <div class="mobile-navigation"></div>
+        <div class="col-xs-12" *ngIf="searchMedias$ | async; let searchMedias">
+            <div *ngFor="let item of searchMedias.results" class="col-xs-6 col-md-3">
+                <mps-card-backdrop-image [item]="item" mediaType="movie" className="latest-movie" [showOverview]="false" (clearSearch)="clearSearch()"></mps-card-backdrop-image>
+            </div>
+        </div>
     </div>
 </header>

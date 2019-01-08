@@ -15,12 +15,14 @@ import { CardPosterImageComponent } from './components/card-poster-image/card-po
 import { CardCastComponent } from './components/card-cast/card-cast.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { SearchComponent } from './components/search/search.component';
+import { SearchModule } from '@platform/core/state/search/search.module';
 @NgModule({
     imports: [
         CommonModule,
         ReactiveFormsModule,
         RouterModule,
-        CarouselModule.forRoot()
+        CarouselModule.forRoot(),
+        SearchModule
     ],
     declarations: [
         RootComponent,

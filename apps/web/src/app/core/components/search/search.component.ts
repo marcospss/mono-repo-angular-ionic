@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, } from "@angular/forms";
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { fromSearch, SearchActions } from "@platform/core/state/search";
+import { fromSearchReducer, SearchActions } from "@platform/core/state/search";
 import { MultiSearch } from "@platform/core/models";
 import { UtilsProvider } from "@platform/core/services";
 
@@ -14,15 +14,15 @@ import { UtilsProvider } from "@platform/core/services";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent implements OnInit {
-    medias$: Observable<MultiSearch[]>;
+    searchMedias$: Observable<MultiSearch[]>;
     search: FormGroup;
     showInput = false;
     constructor(
-        private store: Store<fromSearch.SearchStates>,
+        private store: Store<fromSearchReducer.StateSearch>,
         public utilsProvider: UtilsProvider,
         private formBuilder: FormBuilder
     ) {
-        this.medias$ = store.pipe(select(fromSearch.getSearchResult));
+        this.searchMedias$ = store.pipe(select(fromSearchReducer.getSearchResult));
     }
 
     ngOnInit() {
@@ -32,7 +32,6 @@ export class SearchComponent implements OnInit {
     }
 
     showSearch(): void {
-        this.search.reset();
         this.store.dispatch(new SearchActions.SearchClearAll());
         this.showInput = !this.showInput;
     }
