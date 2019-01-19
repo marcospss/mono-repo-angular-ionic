@@ -1,37 +1,30 @@
 import {
-    ActionReducerMap,
-    MetaReducer,
+    createSelector,
     createFeatureSelector,
-    createSelector
+    ActionReducerMap
 } from '@ngrx/store';
-import { storeFreeze } from 'ngrx-store-freeze';
 
-import { environment } from '@environments';
-import { fromPopular } from '@platform/core/state/movies';
-import { fromSearchReducer } from '@platform/core/state/search';
-import * as fromFavorites from './../favorites/reducers/favorites.reducer';
+// import * as fromRoot from '@reducersRoot';
+import * as fromFavorites from './favorites.reducer';
 
-  export interface State {
-    popular: fromPopular.StatePopular;
-    search: fromSearchReducer.StateSearch;
+export interface FavoritesStates {
     favorites: fromFavorites.State;
-  }
+}
 
-  export const reducers: ActionReducerMap<State> = {
-    popular: fromPopular.reducer,
-    search: fromSearchReducer.reducer,
+// export interface State extends fromRoot.State {
+//     favorites: FavoritesStates;
+// }
+
+export const reducers: ActionReducerMap<FavoritesStates> = {
     favorites: fromFavorites.reducer
-  };
+}
 
-/**
- * Favorites
- */
 
-export const getStateFavorites = createFeatureSelector<State>('favorites');
+export const getStateFavorites = createFeatureSelector<FavoritesStates>('favorites');
 
 export const getFavoritesStates = createSelector(
     getStateFavorites,
-    (state: State) => state.favorites
+    (state: FavoritesStates) => state.favorites
 );
 
 export const selectAllFavorites = createSelector(
@@ -64,10 +57,3 @@ export const selectCurrentFavorite = createSelector(
     selectFavorites,
     (favoritesEntities, favoriteId) => favoritesEntities[favoriteId]
 );
-
-  /**
-   * MetaReducers
-   */
-  export const metaReducers: MetaReducer<State>[] = !environment.production
-    ? [storeFreeze]
-    : [];

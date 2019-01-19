@@ -14,7 +14,6 @@ import { reducers, metaReducers } from './reducers';
 
 import { RootComponent } from './core/containers/root/root.component';
 import { CoreServiceModule } from '@platform/core/services/core-service.module';
-import { SearchEffects  } from "@platform/core/state/search/effects/search.effects";
 
 import { environment } from '@environments';
 
@@ -26,7 +25,7 @@ import { environment } from '@environments';
         CoreModule,
         CoreServiceModule.forRoot(),
         StoreModule.forRoot(reducers, { metaReducers }),
-        EffectsModule.forRoot([SearchEffects]),
+        EffectsModule.forRoot([]),
         !environment.production ? StoreDevtoolsModule.instrument({maxAge: 25}) : []
     ],
     providers: [

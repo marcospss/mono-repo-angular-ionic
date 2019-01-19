@@ -7,6 +7,7 @@ import { UtilsProvider } from '@platform/core/services';
   selector: 'mps-card-backdrop-image',
   template: `
   <div class="{{ className }}">
+  <mps-favorite-media [item]="item"></mps-favorite-media>
         <figure (click)="clearSearch.emit()">
             <a [routerLink]="['/details', mediaType, item.id]" >
                 <img [src]="utilsProvider.backdropImage(item.backdrop_path)" alt="{{ utilsProvider.title(item) }}">

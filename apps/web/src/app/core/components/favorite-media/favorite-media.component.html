@@ -1,0 +1,7 @@
+<button *ngIf="!(isFavorite$ | async)" (click)="addItem()" title="Adicionar: {{ utilsProvider.title(item) }}">
+    <span class="fa fa-heart-o"></span>
+</button>
+
+<button *ngIf="isFavorite$ | async" (click)="removeItem()" title="Remover: {{ utilsProvider.title(item) }}">
+    <span class="fa fa-heart"></span>
+</button>
