@@ -9,7 +9,7 @@
             <div class="col-md-6">
                 <figure class="movie-poster">
                     <img [src]="utilsProvider.backdropImage(details.backdrop_path, 'w780')" alt="{{ utilsProvider.title(details) }}">
-                    <mps-favorite-media [item]="item" class="favorite"></mps-favorite-media>
+                    <mps-favorite-media [item]="details" class="favorite"></mps-favorite-media>
                 </figure>
             </div>
             <div class="col-md-6">
