@@ -13,7 +13,7 @@ export class FavoritesService {
         private storage: LocalStorageService
     ) {
         this.favorites = this.storage.get(STORAGE_KEY) || this.favorites;
-     }
+    }
 
     getAll(): Observable<Media[]> {
         return Observable.of(this.favorites);
@@ -21,29 +21,13 @@ export class FavoritesService {
 
     save(favorite: Media): Observable<boolean> {
         this.favorites = [...this.favorites, favorite];
-        this.isFavorite(favorite);
+        console.log('SAVE -> inCollection -> ', this.favorites);
         return Observable.of(this.storage.set(STORAGE_KEY, this.favorites));
     }
-
-    isFavorite(favorite: Media): Observable<boolean> {
-        let inCollection = false;
-        this.favorites.filter((item) => {
-            if(item.id === favorite.id) {
-                inCollection = true;
-            }
-        });
-        console.log('inCollection', inCollection);
-        return Observable.of(inCollection);
-    }
-
     remove(favorite: Media): Observable<boolean> {
         this.favorites = this.favorites.filter(item => item.id !== favorite.id);
+        console.log('DELETE -> inCollection -> ', this.favorites);
         return Observable.of(this.storage.set(STORAGE_KEY, this.favorites));
-    }
-
-    private generateKey(key: Media): string {
-        const title = ((key.title) ? key.title : key.name).replace(/ /g, '_');
-        return `${key.id}_${title}`;
     }
 
 }

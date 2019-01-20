@@ -7,6 +7,7 @@ import { Media } from '@platform/core/models';
 import * as FavoritesActions from './../actions/favorites.actions';
 import { Observable } from 'rxjs';
 import { switchMap, map, catchError, mergeMap } from 'rxjs/operators';
+import { take } from 'rxjs/operator/take';
 
 @Injectable()
 export class FavoritesEffects {
@@ -33,7 +34,7 @@ export class FavoritesEffects {
         mergeMap(favorite =>
             this.db.save(favorite).pipe(
                 map(() => {
-                    return new FavoritesActions.AddFavoriteSuccess(favorite);
+                    return new FavoritesActions.ActionFavoriteSuccess(favorite);
                 }),
                 catchError(err => Observable.of(new FavoritesActions.AddFavoriteFailure(err)))
             )
@@ -47,7 +48,7 @@ export class FavoritesEffects {
         mergeMap(favorite =>
             this.db.remove(favorite).pipe(
                 map(() => {
-                    return new FavoritesActions.RemoveFavoriteSuccess(favorite);
+                    return new FavoritesActions.ActionFavoriteSuccess(favorite);
                 }),
                 catchError(err => Observable.of(new FavoritesActions.RemoveFavoriteFailure(err)))
             )

@@ -1,9 +1,0 @@
-<carousel>
-    <slide *ngFor="let item of medias.results | slice: startIndex:endIndex">
-        <a [routerLink]="['/details']"><img [src]="utilsProvider.backdropImage(item.backdrop_path, 'w780')" alt="{{ item.title }}"></a>
-        <div class="carousel-caption d-none d-md-block">
-            <h3>{{ utilsProvider.title(item) }}</h3>
-            <p>{{ item.overview | slice:0:140 }}</p>
-        </div>
-    </slide>
-</carousel>

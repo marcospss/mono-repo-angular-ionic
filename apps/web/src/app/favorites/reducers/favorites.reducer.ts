@@ -26,14 +26,11 @@ export function reducer(
         }
 
         case FavoritesActions.FavoritesActionTypes.AddFavorite: {
-            if (state.ids.indexOf(action.payload.id) > -1) {
-                return state;
-            }
             return adapter.addOne(action.payload, state);
         }
 
         case FavoritesActions.FavoritesActionTypes.RemoveFavorite: {
-            return adapter.addOne(action.payload, state);
+            return adapter.removeOne(action.payload.id, state);
         }
 
         default: {

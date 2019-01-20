@@ -6,7 +6,7 @@ import { UtilsProvider } from '@platform/core/services';
 @Component({
   selector: 'mps-card-poster-image',
   template: `
-  <mps-favorite-media [item]="item"></mps-favorite-media>
+    <mps-favorite-media [item]="item"></mps-favorite-media>
     <figure>
         <a [routerLink]="['/details', item.id]">
             <img [src]="utilsProvider.posterImage(item.poster_path)" alt="{{ utilsProvider.title(item) }}">
