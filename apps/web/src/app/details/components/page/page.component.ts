@@ -13,6 +13,9 @@ import { UtilsProvider } from '@platform/core/services';
             overflow: hidden;
             margin-bottom: 10px;
         }
+        .favorite {
+            right: 20px;
+        }
         `
     ]
 })

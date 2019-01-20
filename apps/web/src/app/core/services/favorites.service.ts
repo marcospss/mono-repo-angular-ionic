@@ -21,12 +21,10 @@ export class FavoritesService {
 
     save(favorite: Media): Observable<boolean> {
         this.favorites = [...this.favorites, favorite];
-        console.log('SAVE -> inCollection -> ', this.favorites);
         return Observable.of(this.storage.set(STORAGE_KEY, this.favorites));
     }
     remove(favorite: Media): Observable<boolean> {
         this.favorites = this.favorites.filter(item => item.id !== favorite.id);
-        console.log('DELETE -> inCollection -> ', this.favorites);
         return Observable.of(this.storage.set(STORAGE_KEY, this.favorites));
     }
 

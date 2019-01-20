@@ -13,7 +13,7 @@ import { UtilsProvider } from '@platform/core/services';
         </a>
     </figure>
     <div class="overview">
-        <h3><a [routerLink]="['/details', mediaType, item.id]">{{ utilsProvider.title(item) }}</a></h3>
+        <h3><a [routerLink]="['/details', mediaType, item.id]">{{ utilsProvider.title(item) | slice:0:20 }}</a></h3>
         <p><a [routerLink]="['/details', mediaType, item.id]">{{ item.overview | slice:0:140 }}</a></p>
     </div>
     `,
@@ -33,8 +33,11 @@ import { UtilsProvider } from '@platform/core/services';
         .overview p {
             overflow: hidden;
         }
-        .overview p::after {
+        .overview h3::after, .overview p::after {
             content: "...";
+        }
+        mps-favorite-media > button {
+            color: #000;
         }
         `
     ]
