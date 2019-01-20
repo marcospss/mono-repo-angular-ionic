@@ -14,6 +14,8 @@ import { reducers } from './reducers';
     StoreModule.forFeature('favorites', reducers),
     EffectsModule.forFeature([FavoritesEffects])
   ],
-  declarations: [MainComponent]
+  declarations: [
+      MainComponent
+    ]
 })
 export class FavoritesModule { }

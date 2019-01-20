@@ -7,7 +7,6 @@ import * as fromRoot from './../../../reducers';
 import { Media } from '@platform/core/models';
 import { UtilsProvider } from '@platform/core/services';
 import * as FavoritesActions from './../../../favorites/actions/favorites.actions';
-import { FavoritesService } from './../../services';
 
 @Component({
     selector: 'mps-favorite-media',
@@ -16,7 +15,7 @@ import { FavoritesService } from './../../services';
 })
 export class FavoriteMediaComponent implements OnDestroy {
     mediaType = 'movie';
-    favoriteIds$: Observable<any[]>;
+    favoriteIds$: Observable<string[] | number[]>;
     collectionFavoritesIds = [];
     @Input() item: Media;
     actionsSubscription: Subscription;

@@ -3,36 +3,19 @@
         <a [routerLink]="['/home']">Home</a>
         <span>Favorites</span>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="favoriteCollection$ | async; let favoriteCollection">
 
-        <div class="col-md-3">
+        <article class="col-md-3" *ngFor="let item of favoriteCollection">
             <div class="team">
-                <figure class="team-image"><img src="https://fakeimg.pl/230x230/282828/eae0d0/" alt=""></figure>
-                <h2 class="team-name">Maleficient</h2>
-                <small class="team-title">Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</small>
+                <figure class="team-image">
+                    <a [routerLink]="['/details', mediaType, item.id]">
+                        <img [src]="utilsProvider.posterImage(item.poster_path, 'w185')" alt="{{ utilsProvider.title(item) }}">
+                    </a>
+                </figure>
+                <h2 class="team-name"><a [routerLink]="['/details', mediaType, item.id]">{{ utilsProvider.title(item) }}</a></h2>
+                <small class="team-title">{{ item.overview | slice:0:160 }}</small>
             </div>
-        </div>
-        <div class="col-md-3">
-            <div class="team">
-                <figure class="team-image"><img src="https://fakeimg.pl/230x230/282828/eae0d0/" alt=""></figure>
-                <h2 class="team-name">Maleficient</h2>
-                <small class="team-title">Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</small>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="team">
-                <figure class="team-image"><img src="https://fakeimg.pl/230x230/282828/eae0d0/" alt=""></figure>
-                <h2 class="team-name">Maleficient</h2>
-                <small class="team-title">Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</small>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="team">
-                <figure class="team-image"><img src="https://fakeimg.pl/230x230/282828/eae0d0/" alt=""></figure>
-                <h2 class="team-name">Maleficient</h2>
-                <small class="team-title">Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</small>
-            </div>
-        </div>
+        </article>
 
     </div>
 </div>
