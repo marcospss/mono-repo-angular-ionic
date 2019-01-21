@@ -6,56 +6,57 @@ import { Observable } from 'rxjs/Observable';
 
 import * as fromRoot from './../../app/reducers';
 import { Discover, Media } from '@platform/core/models';
-import { fromMovies ,DiscoverActions } from '@platform/core/state/movies';
+import { fromMovies, DiscoverActions } from '@platform/core/state/movies';
 import * as FavoritesActions from './../../pages/favorites/actions/favorites.actions';
 
 @IonicPage()
 @Component({
-  selector: 'page-movies',
-  templateUrl: 'movies.html',
+    selector: 'page-movies',
+    templateUrl: 'movies.html',
 })
 export class MoviesPage {
-  medias$: Observable<Discover[]>;
-  isFavorite$: Observable<boolean>;
-  mediaType = 'movie';
-  title = 'The Movie Database';
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private store: Store<fromRoot.State>,
-    private storeMovies: Store<fromMovies.MoviesStates>
-
-
+    medias$: Observable<Discover[]>;
+    isFavorite$: Observable<boolean>;
+    mediaType = 'movie';
+    title = 'The Movie Database';
+    constructor(
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        private store: Store<fromRoot.State>,
+        private storeMovies: Store<fromMovies.MoviesStates>
     ) {
         this.medias$ = storeMovies.pipe(select(fromMovies.getMoviesPopularResult));
-    //   this.isFavorite$ = store.pipe(select(fromRoot.selectCurrentFavorite))
-  }
+    }
 
-  ionViewDidLoad() {
-    const filterProperties = {
-      mediaType: 'movie',
-      sortBy: 'popularity.desc',
-      year: '',
-      genre: ''
-    };
-    this.store.dispatch(new DiscoverActions.FilterPropertiesMovie(filterProperties));
-  }
+    ionViewWillEnter() {
+        this.store.dispatch(new FavoritesActions.LoadFavoritesCollection());
+    }
 
-  addItem(item: Media) {
-    const mediaType = { mediaType: this.mediaType},
-    mediaItem = Object.assign({}, item, mediaType);
-    this.store.dispatch(new FavoritesActions.AddFavorite(mediaItem));
-  }
+    ionViewDidLoad() {
+        const filterProperties = {
+            mediaType: 'movie',
+            sortBy: 'popularity.desc',
+            year: '',
+            genre: ''
+        };
+        this.store.dispatch(new DiscoverActions.FilterPropertiesMovie(filterProperties));
+    }
 
-  removeItem(item: Media) {
-    this.store.dispatch(new FavoritesActions.RemoveFavorite(item));
-  }
+    addItem(item: Media) {
+        const mediaType = { mediaType: this.mediaType },
+            mediaItem = Object.assign({}, item, mediaType);
+        this.store.dispatch(new FavoritesActions.AddFavorite(mediaItem));
+    }
 
-  moreInfo(item: Media) {
-    this.navCtrl.push('ItemDetailPage', {
-      item: item,
-      mediaType: this.mediaType
-    });
-  }
+    removeItem(item: Media) {
+        this.store.dispatch(new FavoritesActions.RemoveFavorite(item));
+    }
+
+    moreInfo(item: Media) {
+        this.navCtrl.push('ItemDetailPage', {
+            item: item,
+            mediaType: this.mediaType
+        });
+    }
 
 }

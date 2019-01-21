@@ -28,7 +28,7 @@ export function reducer(
         }
 
         case FavoritesActions.FavoritesActionTypes.RemoveFavorite: {
-            return adapter.addOne(action.payload, state);
+            return adapter.removeOne(action.payload.id, state);
         }
 
         default: {

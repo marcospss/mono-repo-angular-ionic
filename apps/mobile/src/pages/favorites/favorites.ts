@@ -29,8 +29,7 @@ export class FavoritesPage {
   }
 
   removeItem(item: Media) {
-    console.error('Falta corrigir o retorno está em looping', item)
-    // this.store.dispatch(new FavoritesActions.RemoveFavorite(item));
+    this.store.dispatch(new FavoritesActions.RemoveFavorite(item));
   }
 
   moreInfo(item: Media) {

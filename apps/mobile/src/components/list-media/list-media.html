@@ -16,17 +16,8 @@
 
     <ion-row>
         <ion-col text-left>
-            <button ion-button color="primary" clear small icon-start (click)="addItem.emit(item)">
-                <ion-icon name='star' isActive="false"></ion-icon>
-                Add Favorite
-            </button>
+            <track-untrack-media [item]="item" [mediaType]="mediaType"></track-untrack-media>
         </ion-col>
-        <!-- <ion-col text-left>
-            <button ion-button clear small color="danger" icon-start (click)="removeItem.emit(item)">
-                <ion-icon name='trash'></ion-icon>
-                Remove Favorite
-            </button>
-        </ion-col> -->
         <ion-col text-right>
             <button ion-button color="primary" clear small icon-start (click)="moreInfo.emit(item)">
                 <ion-icon name='arrow-forward'></ion-icon>

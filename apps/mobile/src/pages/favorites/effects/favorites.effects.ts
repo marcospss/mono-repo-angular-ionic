@@ -35,7 +35,7 @@ export class FavoritesEffects {
             this.db.save(favorite).pipe(
                 map(() => {
                     this.notifications.showToast('bottom', 'Saved successfully!');
-                    return new FavoritesActions.AddFavoriteSuccess(favorite);
+                    return new FavoritesActions.ActionFavoriteSuccess(favorite);
                 }),
                 catchError(err => Observable.of(new FavoritesActions.AddFavoriteFailure(err)))
             )
@@ -49,8 +49,8 @@ export class FavoritesEffects {
         mergeMap(favorite =>
             this.db.remove(favorite).pipe(
                 map(() => {
-                    this.notifications.showToast('bottom', 'Saved successfully!');
-                    return new FavoritesActions.RemoveFavoriteSuccess(favorite);
+                    this.notifications.showToast('bottom', 'Removed successfully!');
+                    return new FavoritesActions.ActionFavoriteSuccess(favorite);
                 }),
                 catchError(err => Observable.of(new FavoritesActions.RemoveFavoriteFailure(err)))
             )

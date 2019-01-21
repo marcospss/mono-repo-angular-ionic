@@ -1,26 +1,53 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-// import { Observable } from 'rxjs';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
+import * as fromRoot from './../../app/reducers';
 import { Media } from '@platform/core/models';
-// import { FavoritesProvider } from '@platform/core/services';
-
+import { UtilsProvider } from '@platform/core/services';
+import * as FavoritesActions from './../../pages/favorites/actions/favorites.actions';
 @Component({
-  selector: 'track-untrack-media',
-  templateUrl: 'track-untrack-media.html'
+    selector: 'track-untrack-media',
+    templateUrl: 'track-untrack-media.html'
 })
-export class TrackUntrackMediaComponent {
-  @Input() media: Media;
-  @Output() addItem = new EventEmitter<Media>();
-  @Output() removeItem = new EventEmitter<Media>();
-  isSelectedBookInCollection: boolean;
-  constructor(
-    // private db: FavoritesProvider
+export class TrackUntrackMediaComponent implements OnDestroy {
+    @Input() item: Media;
+    @Input() mediaType: string;
+    favoriteIds$: Observable<string[] | number[]>;
+    collectionFavoritesIds = [];
+    actionsSubscription: Subscription;
+    constructor(
+        private store: Store<fromRoot.State>,
+        public utilsProvider: UtilsProvider
     ) {
-      //
-  }
+        this.favoriteIds$ = store.pipe(select(fromRoot.selectFavoriteIds));
+        this.actionsSubscription = this.favoriteIds$
+            .subscribe(data => {
+                return this.collectionFavoritesIds = data;
+            });
+    }
 
-  ionViewDidLoad() {
-    // this.isSelectedBookInCollection = this.db.inCollection(this.media);
-  }
+    ionViewDidLoad() {
+        // this.isSelectedBookInCollection = this.db.inCollection(this.media);
+    }
+
+    ngOnDestroy() {
+        this.actionsSubscription.unsubscribe();
+    }
+
+    addItem() {
+        const mediaType = { mediaType: this.mediaType },
+            mediaItem = Object.assign({}, this.item, mediaType);
+        this.store.dispatch(new FavoritesActions.AddFavorite(mediaItem));
+    }
+
+    removeItem() {
+        this.store.dispatch(new FavoritesActions.RemoveFavorite(this.item));
+    }
+
+    get isFavorite() {
+        return this.item.id && this.collectionFavoritesIds.indexOf(this.item.id) > -1;
+    }
 
 }

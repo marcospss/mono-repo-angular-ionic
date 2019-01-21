@@ -11,6 +11,7 @@ export enum FavoritesActionTypes {
     LoadFavoritesCollection = '[Favorites Page] Load Favorites Collection',
     LoadFavoritesSuccess = '[Favorites/API] Load Favorites Success',
     LoadFavoritesFailure = '[Favorites/API] Load Favorites Failure',
+    ActionFavoriteSuccess = '[Favorites/API] Action Favorite Success',
   }
 
   export class LoadFavoritesCollection implements Action {
@@ -61,6 +62,15 @@ export enum FavoritesActionTypes {
   }
 
   /**
+   * Generics Add/Remove
+   */
+  export class ActionFavoriteSuccess implements Action {
+    readonly type = FavoritesActionTypes.ActionFavoriteSuccess;
+
+    constructor(public payload: Media) {}
+  }
+
+  /**
    * Load Collection Actions
    */
   export class LoadFavoritesSuccess implements Action {
@@ -82,6 +92,7 @@ export enum FavoritesActionTypes {
     | RemoveFavorite
     | RemoveFavoriteSuccess
     | RemoveFavoriteFailure
+    | ActionFavoriteSuccess
     | LoadFavoritesCollection
     | LoadFavoritesSuccess
     | LoadFavoritesFailure;
