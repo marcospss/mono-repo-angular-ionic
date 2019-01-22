@@ -24,7 +24,7 @@ export class FavoritesPage {
       this.medias$ = store.pipe(select(fromRoot.selectAllFavorites));
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     this.store.dispatch(new FavoritesActions.LoadFavoritesCollection());
   }
 

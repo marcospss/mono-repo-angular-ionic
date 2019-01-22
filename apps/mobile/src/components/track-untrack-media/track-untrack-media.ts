@@ -28,10 +28,6 @@ export class TrackUntrackMediaComponent implements OnDestroy {
             });
     }
 
-    ionViewDidLoad() {
-        // this.isSelectedBookInCollection = this.db.inCollection(this.media);
-    }
-
     ngOnDestroy() {
         this.actionsSubscription.unsubscribe();
     }

@@ -14,10 +14,11 @@ export class FavoritesService {
   }
 
   getAll(): Observable<Media[]> {
-    const getAll = this.storage.forEach((media: Media) => {
-      this.favorites.push(media);
-    }).then(() => this.favorites);
-    return Observable.fromPromise(getAll);
+    let getAll = [];
+    this.storage.forEach((media: Media) => {
+        getAll.push(media);
+    }).then(() => this.favorites = getAll);
+    return Observable.of(this.favorites);
   }
 
   save(favorite: Media ): Observable<Media> {

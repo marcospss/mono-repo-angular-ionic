@@ -5,7 +5,7 @@ export enum FavoritesActionTypes {
     AddFavorite = '[Favorites/API] Add Favorite',
     AddFavoriteSuccess = '[Favorites/API] Add Favorite Success',
     AddFavoriteFailure = '[Favorites/API] Add Favorite Failure',
-    RemoveFavorite = '[Favorites/API] Remove Favorite Success',
+    RemoveFavorite = '[Favorites/API] Remove Favorite',
     RemoveFavoriteSuccess = '[Favorites/API] Remove Favorite Success',
     RemoveFavoriteFailure = '[Favorites/API] Remove Favorite Failure',
     LoadFavoritesCollection = '[Favorites Page] Load Favorites Collection',
