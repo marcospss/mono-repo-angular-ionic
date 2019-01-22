@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { select, Store } from "@ngrx/store";
 import { Observable } from "rxjs";
@@ -10,7 +10,8 @@ import { UtilsProvider } from "@platform/core/services";
 @IonicPage()
 @Component({
   selector: "page-search",
-  templateUrl: "search.html"
+  templateUrl: "search.html",
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchPage {
   medias$: Observable<MultiSearch[]>;

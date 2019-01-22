@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Store, select } from '@ngrx/store';
@@ -13,6 +13,7 @@ import * as FavoritesActions from './../../pages/favorites/actions/favorites.act
 @Component({
     selector: 'page-movies',
     templateUrl: 'movies.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MoviesPage {
     medias$: Observable<Discover[]>;

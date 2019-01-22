@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -13,6 +13,7 @@ import { UtilsProvider } from '@platform/core/services';
 @Component({
   selector: 'page-item-detail',
   templateUrl: 'item-detail.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemDetailPage {
   item: Media;

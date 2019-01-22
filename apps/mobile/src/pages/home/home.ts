@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
 import { Store, select } from '@ngrx/store';
@@ -10,7 +10,8 @@ import * as FavoritesActions from './../../pages/favorites/actions/favorites.act
 @IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePage {
 

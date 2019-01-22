@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -11,6 +11,7 @@ import { Media } from '@platform/core/models';
 @Component({
   selector: 'page-favorites',
   templateUrl: 'favorites.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FavoritesPage {
   medias$: Observable<Media[]>;
