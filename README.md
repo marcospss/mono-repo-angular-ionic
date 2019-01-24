@@ -5,6 +5,13 @@ Esta projeto compartilha as funcionalidades de lógica de negócios baseada em [
 
 O projeto é baseado em uma estrutura de mono-repo do Nx Workspace (do Nrwl.io [Nx Extensions](https://github.com/nrwl/nx), um kit de ferramentas de código aberto para aplicativos corporativos Angular).
 
+### Links
+
+| Project | Link |
+| ------- | ------- |
+| **Ionic** | [`@apps/ionic`](https://mono-repo-apps.herokuapp.com/ionic/#/home/movies/movies)
+| **Angular** | [`@apps/web`](https://mono-repo-apps.herokuapp.com/angular/#/home)
+
 Pré-requisitos para executar do projeto:
 
 ## Configuração da API TMDB
