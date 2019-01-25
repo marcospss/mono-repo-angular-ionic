@@ -4,6 +4,6 @@ export const environment = {
     dbName: 'ionicNgrxMovieDB',
     storeName: 'favorites',
     apiEndpoint: 'https://api.themoviedb.org/3',
-    apikey: '--- API KEY ---',
+    apikey: '---- API KEY ----',
     language: 'en-US'
 };
